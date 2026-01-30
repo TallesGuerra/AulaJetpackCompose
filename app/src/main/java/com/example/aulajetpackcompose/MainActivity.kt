@@ -57,7 +57,10 @@ fun PrimeiroApp(){
 
         Text( text = "Talles", fontSize = 36.sp )
         Text( text = "Nanda", fontSize = 36.sp )
-        Text( text = "Piettro", fontSize = 36.sp )
+
+        ButtonTeste(texto = "Talles Guerra"){
+        println("executou")
+         }
 
 
     } // Fim Column
