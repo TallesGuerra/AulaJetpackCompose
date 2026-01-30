@@ -14,34 +14,38 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.example.aulajetpackcompose.ui.theme.AulaJetpackComposeTheme
 
 class MainActivity : ComponentActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
             AulaJetpackComposeTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
-            }
+            //Scaffold organiza a estrutura; Surface define a aparência da superfície. 
+            
+                PrimeiroApp()
+
+
+
+
+            } //Fechamento theme
         }
     }
 }
+//fechamento MainACtivity
+
 
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
+fun PrimeiroApp(){
     Text(
-        text = "Hello $name!",
-        modifier = modifier
+        text = "Talles",
+        color = Color.Black    
     )
 }
 
-@Preview(showBackground = true)
+
+@Preview
 @Composable
-fun GreetingPreview() {
-    AulaJetpackComposeTheme {
-        Greeting("Android")
-    }
+fun PrimeiroAppPreview(){
+     PrimeiroApp()
 }
+
