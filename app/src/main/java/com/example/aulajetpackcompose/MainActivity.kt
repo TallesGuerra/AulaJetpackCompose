@@ -40,41 +40,30 @@ fun PrimeiroApp(){
         modifier = Modifier
             .fillMaxWidth()
             .fillMaxHeight()
-            .background( Color.Gray )
-    ){
+            .background( Color.Gray ),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.End
+        // Center,Top, Bottom, SpaceBetween, SpaceAround, SpaceEvenly(espaço igual entre todos os items
+        //horizontalAlignment » Start, CenterHorizontally e End
 
-        Text(
-            text = "Talles",
-            color = Color.Black,
-            fontSize = 36.sp   
-        )
+        /*  para ROW vai ser:
+        horizontalArrangement
+        Arragenment » End, Center e Start
+        paceBetween, SpaceAround, SpaceEvenly(espaço igual entre todos os items)    
+        
+        verticalAlignment » Top, Bottom e CenterVertically
+        */
+    ) {
 
-         Text(
-            text = "Nanda",
-            color = Color.Black,
-            fontSize = 36.sp      
-        )
-
-
+        Text( text = "Talles", fontSize = 36.sp )
+        Text( text = "Nanda", fontSize = 36.sp )
+        Text( text = "Piettro", fontSize = 36.sp )
 
 
     } // Fim Column
-
-
-   /* Text(
-        text = "Talles",
-        color = Color.Black    
-    )
-     */
-    /*
-    Button(onCLick = { }) {
-        Text(
-            text = "Clicar",
-            color = Color.Blue
-        )
-    }  */
+ 
 }
-
+ //Fim da fun PrimeiroApp
 
 @Preview
 @Composable
