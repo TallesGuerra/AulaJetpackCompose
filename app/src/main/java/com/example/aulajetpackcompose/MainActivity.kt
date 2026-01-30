@@ -36,10 +36,43 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun PrimeiroApp(){
-    Text(
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .fillMaxHeight()
+            .background( Color.Gray )
+    ){
+
+        Text(
+            text = "Talles",
+            color = Color.Black,
+            fontSize = 36.sp   
+        )
+
+         Text(
+            text = "Nanda",
+            color = Color.Black,
+            fontSize = 36.sp      
+        )
+
+
+
+
+    } // Fim Column
+
+
+   /* Text(
         text = "Talles",
         color = Color.Black    
     )
+     */
+    /*
+    Button(onCLick = { }) {
+        Text(
+            text = "Clicar",
+            color = Color.Blue
+        )
+    }  */
 }
 
 
