@@ -23,6 +23,7 @@ import androidx.compose.ui.input.key.Key.Companion.Home
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.aulajetpackcompose.componentes.BarraSuperior
 import com.example.aulajetpackcompose.ui.theme.AulaJetpackComposeTheme
 
 class InstagramActivity : ComponentActivity() {
@@ -33,27 +34,21 @@ class InstagramActivity : ComponentActivity() {
         setContent {
             AulaJetpackComposeTheme {
                 Scaffold(
-                    topBar = {
-                        TopAppBar(
-                            title = {
-                                Text( text = "Instagram" )}
-                        )
-                    },
-
+                    topBar = { BarraSuperior() },
                     bottomBar = {
                         BottomAppBar{
                             Text(text = "Bottom App Bar")
                         }
                     },
 
-                    floatingActionButton = {
-                        FloatingActionButton(onClick = { /*TODO*/ }) {
+                    /*floatingActionButton = {
+                        FloatingActionButton(onClick = { *//*TODO*//* }) {
                             Icon(
                                 painter = painterResource(R.drawable.ic_add_24),
                                 contentDescription = "Botão de adicionar"
                             )
                         }
-                    },
+                    },*/
 
                     //floatingActionButtonPosition = FabPosition.End  /* é o padrão, por isso nao é preciso utilizar*/
                 ){
