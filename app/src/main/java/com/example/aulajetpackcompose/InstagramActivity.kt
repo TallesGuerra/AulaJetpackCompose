@@ -23,10 +23,40 @@ import androidx.compose.ui.input.key.Key.Companion.Home
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.aulajetpackcompose.componentes.AreaDestaque
 import com.example.aulajetpackcompose.componentes.BarraSuperior
+import com.example.aulajetpackcompose.model.Destaque
 import com.example.aulajetpackcompose.ui.theme.AulaJetpackComposeTheme
 
 class InstagramActivity : ComponentActivity() {
+    private val listaDestaques = listOf(
+        Destaque(R.drawable.perfil_01, "Talles"),
+        Destaque(R.drawable.perfil_02, "Fernanda"),
+        Destaque(R.drawable.perfil_03, "Piettro"),
+        Destaque(R.drawable.perfil_03, "Julia"),
+        Destaque(R.drawable.perfil_03, "Benjamin"),
+        Destaque(R.drawable.perfil_03, "Gustavo"),
+        Destaque(R.drawable.perfil_01, "Talles"),
+        Destaque(R.drawable.perfil_02, "Fernanda"),
+        Destaque(R.drawable.perfil_03, "Piettro"),
+        Destaque(R.drawable.perfil_03, "Julia"),
+        Destaque(R.drawable.perfil_03, "Benjamin"),
+        Destaque(R.drawable.perfil_03, "Gustavo"),
+        Destaque(R.drawable.perfil_01, "Talles"),
+        Destaque(R.drawable.perfil_02, "Fernanda"),
+        Destaque(R.drawable.perfil_03, "Piettro"),
+        Destaque(R.drawable.perfil_03, "Julia"),
+        Destaque(R.drawable.perfil_03, "Benjamin"),
+        Destaque(R.drawable.perfil_03, "Gustavo"),
+        Destaque(R.drawable.perfil_01, "Talles"),
+        Destaque(R.drawable.perfil_02, "Fernanda"),
+        Destaque(R.drawable.perfil_03, "Piettro"),
+        Destaque(R.drawable.perfil_03, "Julia"),
+        Destaque(R.drawable.perfil_03, "Benjamin"),
+        Destaque(R.drawable.perfil_03, "Gustavo"),
+    )
+
+
     @OptIn(ExperimentalMaterial3Api::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -70,7 +100,11 @@ class InstagramActivity : ComponentActivity() {
                 .fillMaxWidth()
 
         ) {
-            Text(text = "Olá, instagram")
+            // Área de destaque
+
+            AreaDestaque(listaDestaques)
+
+            // Postagens
         }
     }
 
