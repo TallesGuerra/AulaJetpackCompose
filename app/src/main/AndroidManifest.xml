@@ -11,12 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AulaJetpackCompose">
-        <activity
-            android:name=".Padrapctivity"
-            android:exported="false" />
-        <activity
-            android:name=".PadraoActivity2"
-            android:exported="false" />
+
         <activity
             android:name=".PadraoActivity"
             android:exported="false"

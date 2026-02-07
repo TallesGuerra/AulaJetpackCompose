@@ -12,6 +12,7 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 
@@ -22,11 +23,16 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyHorizontalGrid
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material3.Button
+import androidx.compose.material3.Divider
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
@@ -77,7 +83,8 @@ class MainActivity : ComponentActivity() {
         Usuario(
             nome = "Nanda",
             idade = 34
-        ),   Usuario(
+        ),
+        Usuario(
             nome = "Talles",
             idade = 33
         ),
@@ -104,7 +111,6 @@ class MainActivity : ComponentActivity() {
     )
 
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -119,37 +125,82 @@ class MainActivity : ComponentActivity() {
 
 
     @Composable
-    fun SegundoApp(){
+    fun SegundoApp() {
         var contador by remember {
             mutableStateOf(0)
         }
 
+        var nome by remember {
+            mutableStateOf("")
+        }
+
+        var listaUsuarios by remember {
+            mutableStateOf(listOf<Usuario>())
+        }
+
+
 
         Column(
             modifier = Modifier
-                .background(Color.Cyan)
-                .padding(10.dp)
+                .background(Color.White)
+                .padding(16.dp)
                 .fillMaxWidth()
                 .fillMaxHeight()
+
         ) { // Inicio da Nova Interface
 
-            Button(onClick = {
-                contador
-                Log.i("Meu App", "Contador: $contador")
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                //TextField
+                OutlinedTextField(
+                    value = nome,
+                    onValueChange = { texto ->
+                        nome = texto
+                        //Log.i("Meu App", "Valor Digitado: $nome")
 
-            }) {
-                Text(text = "Clique")
+                    },
+                    placeholder = {
+                        Text(text = "Digite seu nome")
+                    },
+                    modifier = Modifier
+                        .weight(1f)
+                )
+
+                Spacer(modifier =  Modifier.width(8.dp))
+                Button(onClick = {
+                    //Adicionar Lista
+                    val novoUsuario = Usuario( nome = nome, idade = 0 )
+                    listaUsuarios = listaUsuarios + novoUsuario
+                    nome = ""
+
+                }) {
+                    Icon(
+                        painter = painterResource(R.drawable.ic_add_24),
+                        contentDescription = null,
+                    )
+                }
+            } // Fechamento Row
+
+            LazyColumn(
+                modifier = Modifier
+                    .padding(
+                        top = 16.dp,
+                        bottom= 16.dp
+                    )
+            ) {
+                items(listaUsuarios ){ usuario ->
+                        Text(
+                            text = "+) ${ usuario.nome } ",
+                            modifier = Modifier
+                                .padding( 8.dp),
+                        )
+                         HorizontalDivider()
+                }
             }
-            Text(text = "Contador: $contador")
-
-
 
         } // Fechamento Column
 
 
-
     } // Fechamento Segundo App
-
 
 
     @Composable
@@ -162,8 +213,8 @@ class MainActivity : ComponentActivity() {
                 .fillMaxHeight()
         ) {
 
-        //LazyRow
-        //LazyColumn
+            //LazyRow
+            //LazyColumn
             /*LazyVerticalGrid(
                 // Adapive » coloca uma largura minima e ela vai se adaptar ao item
                 // Fixed » determina a qt de colunas e linhas
@@ -188,14 +239,14 @@ class MainActivity : ComponentActivity() {
             ) {
                 items(usuarios.size) { indice ->
 
-                    val  nome = usuarios[indice].nome
-                    val  idade = usuarios[indice].idade
+                    val nome = usuarios[indice].nome
+                    val idade = usuarios[indice].idade
 
                     Column(
                         modifier = Modifier
-                            .padding( bottom = 16.dp, top = 16.dp),
+                            .padding(bottom = 16.dp, top = 16.dp),
                         horizontalAlignment = Alignment.CenterHorizontally
-                    ){
+                    ) {
                         Image(
                             painter = painterResource(R.drawable.carro),
                             contentDescription = null,
@@ -213,45 +264,43 @@ class MainActivity : ComponentActivity() {
                     }
 
 
-
-
-                /*
-                    Row(
-                        modifier = Modifier
-                            .padding( bottom = 16.dp, top = 16.dp),
-                        verticalAlignment = Alignment.CenterVertically
-                    ){
-
-
-                        Image(
-                            painter = painterResource(R.drawable.carro),
-                            contentDescription = null,
+                    /*
+                        Row(
                             modifier = Modifier
-                                .width(80.dp)
-                                .height(80.dp),
-
-                            contentScale = ContentScale.Fit,
-
-                        )
-
-                        Text(
-                            text = "$nome -  $idade",
-                            fontSize = 32.sp,
-                            modifier = Modifier
-                                .padding( start = 16.dp)
-
-                        )
-                    }*/ // Fechamento Row
+                                .padding( bottom = 16.dp, top = 16.dp),
+                            verticalAlignment = Alignment.CenterVertically
+                        ){
 
 
-                 /*   Box(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .height(1.dp)
-                            .background(Color.Yellow)
+                            Image(
+                                painter = painterResource(R.drawable.carro),
+                                contentDescription = null,
+                                modifier = Modifier
+                                    .width(80.dp)
+                                    .height(80.dp),
 
-                    )
-    */
+                                contentScale = ContentScale.Fit,
+
+                            )
+
+                            Text(
+                                text = "$nome -  $idade",
+                                fontSize = 32.sp,
+                                modifier = Modifier
+                                    .padding( start = 16.dp)
+
+                            )
+                        }*/ // Fechamento Row
+
+
+                    /*   Box(
+                           modifier = Modifier
+                               .fillMaxWidth()
+                               .height(1.dp)
+                               .background(Color.Yellow)
+
+                       )
+       */
                 }
 
             }
@@ -273,34 +322,34 @@ class MainActivity : ComponentActivity() {
             }
     */
 
-    /*
-            Image(
-                painter = painterResource(R.drawable.carro),
-                contentDescription = null,
-                modifier = Modifier
-                    .width(100.dp)
-                    .height(100.dp)
-                    .border(2.dp, Color.Blue),
-                contentScale = ContentScale.Fit,
-                alignment = Alignment.Center
-            )
+            /*
+                    Image(
+                        painter = painterResource(R.drawable.carro),
+                        contentDescription = null,
+                        modifier = Modifier
+                            .width(100.dp)
+                            .height(100.dp)
+                            .border(2.dp, Color.Blue),
+                        contentScale = ContentScale.Fit,
+                        alignment = Alignment.Center
+                    )
 
-            Icon(
-                painter = painterResource(R.drawable.ic_alarm_24),
-                contentDescription = null,
-            )
-
-            Button(onClick = {}) {
-                Row {
                     Icon(
-                        imageVector = Icons.Default.Lock,
-                        contentDescription = null
+                        painter = painterResource(R.drawable.ic_alarm_24),
+                        contentDescription = null,
                     )
-                    Text(
-                        text = "Desbloquear"
-                    )
-                }
-            }*/
+
+                    Button(onClick = {}) {
+                        Row {
+                            Icon(
+                                imageVector = Icons.Default.Lock,
+                                contentDescription = null
+                            )
+                            Text(
+                                text = "Desbloquear"
+                            )
+                        }
+                    }*/
         }
     }
 
@@ -312,5 +361,3 @@ class MainActivity : ComponentActivity() {
     }
 
 } // Fechamento MainActivity
-
-
