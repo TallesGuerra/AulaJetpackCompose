@@ -28,6 +28,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.aulajetpackcompose.componentes.AreaDestaque
 import com.example.aulajetpackcompose.componentes.AreaPostagem
+import com.example.aulajetpackcompose.componentes.BarraInferior
 import com.example.aulajetpackcompose.componentes.BarraSuperior
 import com.example.aulajetpackcompose.model.Destaque
 import com.example.aulajetpackcompose.model.Postagem
@@ -35,57 +36,59 @@ import com.example.aulajetpackcompose.ui.theme.AulaJetpackComposeTheme
 
 class InstagramActivity : ComponentActivity() {
     private val listaDestaques = listOf(
-        Destaque(R.drawable.perfil_01, "Talles"),
+        Destaque(R.drawable.perfil_02, "Talles"),
         Destaque(R.drawable.perfil_02, "Fernanda"),
         Destaque(R.drawable.perfil_03, "Piettro"),
         Destaque(R.drawable.perfil_03, "Julia"),
         Destaque(R.drawable.perfil_03, "Benjamin"),
         Destaque(R.drawable.perfil_03, "Gustavo"),
-        Destaque(R.drawable.perfil_01, "Talles"),
+        Destaque(R.drawable.perfil_02, "Talles"),
         Destaque(R.drawable.perfil_02, "Fernanda"),
         Destaque(R.drawable.perfil_03, "Piettro"),
         Destaque(R.drawable.perfil_03, "Julia"),
         Destaque(R.drawable.perfil_03, "Benjamin"),
         Destaque(R.drawable.perfil_03, "Gustavo"),
-        Destaque(R.drawable.perfil_01, "Talles"),
+        Destaque(R.drawable.perfil_02, "Talles"),
         Destaque(R.drawable.perfil_02, "Fernanda"),
         Destaque(R.drawable.perfil_03, "Piettro"),
         Destaque(R.drawable.perfil_03, "Julia"),
         Destaque(R.drawable.perfil_03, "Benjamin"),
         Destaque(R.drawable.perfil_03, "Gustavo"),
-        Destaque(R.drawable.perfil_01, "Talles"),
+        Destaque(R.drawable.perfil_02, "Talles"),
         Destaque(R.drawable.perfil_02, "Fernanda"),
         Destaque(R.drawable.perfil_03, "Piettro"),
         Destaque(R.drawable.perfil_03, "Julia"),
         Destaque(R.drawable.perfil_03, "Benjamin"),
         Destaque(R.drawable.perfil_03, "Gustavo"),
-    )
+        Destaque(R.drawable.perfil_02, "Talles"),
+        Destaque(R.drawable.perfil_02, "Fernanda"),
+        Destaque(R.drawable.perfil_03, "Piettro"),
+        Destaque(R.drawable.perfil_03, "Julia"),
+        Destaque(R.drawable.perfil_03, "Benjamin"),
+        Destaque(R.drawable.perfil_03, "Gustavo"),
+
+        )
 
     private val listaPostagens = listOf(
-        Postagem(R.drawable.perfil_01, "Talles", R.drawable.floresta, "Floresta"),
+        Postagem(R.drawable.perfil_02, "Talles", R.drawable.floresta, "Floresta"),
         Postagem(R.drawable.perfil_02, "Fernanda", R.drawable.praia, "Praia"),
         Postagem(R.drawable.perfil_02, "Piettro", R.drawable.carro, "Carro"),
-        Postagem(R.drawable.perfil_01, "Talles", R.drawable.floresta, "Floresta"),
+        Postagem(R.drawable.perfil_02, "Talles", R.drawable.floresta, "Floresta"),
         Postagem(R.drawable.perfil_02, "Fernanda", R.drawable.praia, "Praia"),
         Postagem(R.drawable.perfil_02, "Piettro", R.drawable.carro, "Carro"),
-        Postagem(R.drawable.perfil_01, "Talles", R.drawable.floresta, "Floresta"),
+        Postagem(R.drawable.perfil_02, "Talles", R.drawable.floresta, "Floresta"),
         Postagem(R.drawable.perfil_02, "Fernanda", R.drawable.praia, "Praia"),
         Postagem(R.drawable.perfil_02, "Piettro", R.drawable.carro, "Carro"),
-        Postagem(R.drawable.perfil_01, "Talles", R.drawable.floresta, "Floresta"),
+        Postagem(R.drawable.perfil_02, "Talles", R.drawable.floresta, "Floresta"),
         Postagem(R.drawable.perfil_02, "Fernanda", R.drawable.praia, "Praia"),
         Postagem(R.drawable.perfil_02, "Piettro", R.drawable.carro, "Carro"),
-        Postagem(R.drawable.perfil_01, "Talles", R.drawable.floresta, "Floresta"),
+        Postagem(R.drawable.perfil_02, "Talles", R.drawable.floresta, "Floresta"),
         Postagem(R.drawable.perfil_02, "Fernanda", R.drawable.praia, "Praia"),
         Postagem(R.drawable.perfil_02, "Piettro", R.drawable.carro, "Carro"),
-        Postagem(R.drawable.perfil_01, "Talles", R.drawable.floresta, "Floresta"),
+        Postagem(R.drawable.perfil_02, "Talles", R.drawable.floresta, "Floresta"),
         Postagem(R.drawable.perfil_02, "Fernanda", R.drawable.praia, "Praia"),
         Postagem(R.drawable.perfil_02, "Piettro", R.drawable.carro, "Carro"),
-        Postagem(R.drawable.perfil_01, "Talles", R.drawable.floresta, "Floresta"),
-        Postagem(R.drawable.perfil_02, "Fernanda", R.drawable.praia, "Praia"),
-        Postagem(R.drawable.perfil_02, "Piettro", R.drawable.carro, "Carro"),
-        Postagem(R.drawable.perfil_01, "Talles", R.drawable.floresta, "Floresta"),
-        Postagem(R.drawable.perfil_02, "Fernanda", R.drawable.praia, "Praia"),
-        Postagem(R.drawable.perfil_02, "Piettro", R.drawable.carro, "Carro"),
+
 
         )
 
@@ -98,32 +101,27 @@ class InstagramActivity : ComponentActivity() {
             AulaJetpackComposeTheme {
                 Scaffold(
                     topBar = { BarraSuperior() },
-                    bottomBar = {
-                        BottomAppBar {
-                            Text(text = "Bottom App Bar")
-                        }
-                    },
+                    bottomBar = { BarraInferior() },
 
                     /*floatingActionButton = {
                         FloatingActionButton(onClick = { */
                     /*TODO*/
                     /* }) {
-                                                Icon(
-                                                    painter = painterResource(R.drawable.ic_add_24),
-                                                    contentDescription = "Botão de adicionar"
-                                                )
-                                            }
-                                        },*/
+                         IIcon(
+                               painter = painterResource(R.drawable.ic_add_24),
+                               contentDescription = "Botão de adicionar"
+                               )
+                }
+            },*/
 
                     //floatingActionButtonPosition = FabPosition.End  /* é o padrão, por isso nao é preciso utilizar*/
+
                 ) { paddingInterno ->
                     Home(Modifier.padding(paddingInterno))
 
                 }
             }
         }
-
-
     }// Fechamento onCreate
 
     @Composable
@@ -136,7 +134,6 @@ class InstagramActivity : ComponentActivity() {
         ) {
             // Área de destaque
             AreaDestaque(listaDestaques)
-
 
             HorizontalDivider()
 
@@ -155,4 +152,3 @@ class InstagramActivity : ComponentActivity() {
     }
 
 }// Fechamento Activity
-
